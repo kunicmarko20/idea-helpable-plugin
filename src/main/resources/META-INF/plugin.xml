@@ -1,0 +1,20 @@
+<idea-plugin>
+  <id>com.github.kunicmarko20.idea.lendahelper</id>
+  <name>LendaHelper</name>
+  <version>0.1.0</version>
+  <vendor email="kunicmarko20@gmail.com" url="https://github.com/kunicmarko20">Marko Kunic</vendor>
+
+  <idea-version since-build="173.0"/>
+
+  <depends>com.jetbrains.php</depends>
+  <depends>com.intellij.modules.platform</depends>
+
+  <actions>
+    <action id="com.github.kunicmarko20.idea.lendahelper.actions.generators.Equals"
+            class="com.github.kunicmarko20.idea.lendahelper.actions.generators.Equals"
+            text="Equals">
+      <add-to-group group-id="GenerateGroup" anchor="last"/>
+    </action>
+  </actions>
+
+</idea-plugin>
