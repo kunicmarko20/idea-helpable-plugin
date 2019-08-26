@@ -10,7 +10,7 @@ public class EqualsHandler extends ActionHandler {
     @Override
     @NotNull
     protected String body() {
-        StringBuffer body = new StringBuffer();
+        StringBuilder body = new StringBuilder();
 
         int propertiesLength = this.classProperties.length;
         for (int i = 0; i < propertiesLength; i++) {

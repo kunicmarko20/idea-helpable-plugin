@@ -11,7 +11,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-public class MemberChooser {
+public class PropertyChooser {
     @Nullable
     public static PhpNamedElementNode[] choose(PhpNamedElementNode[] members, Project project, boolean allowMultiSelection) {
         PhpNamedElementNode[] nodes = (PhpNamedElementNode[]) fixOrderToBeAsOriginalFiles(members).toArray(new PhpNamedElementNode[members.length]);

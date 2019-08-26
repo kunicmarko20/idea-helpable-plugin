@@ -25,6 +25,11 @@
             text="ToInteger">
       <add-to-group group-id="GenerateGroup" anchor="last"/>
     </action>
+    <action id="com.github.kunicmarko20.idea.lendahelper.actions.generation.WitherAction"
+            class="com.github.kunicmarko20.idea.lendahelper.actions.generation.WitherAction"
+            text="Wither">
+      <add-to-group group-id="GenerateGroup" anchor="last"/>
+    </action>
   </actions>
 
 </idea-plugin>

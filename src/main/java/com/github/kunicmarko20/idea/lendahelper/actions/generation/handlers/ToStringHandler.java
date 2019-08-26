@@ -1,6 +1,6 @@
 package com.github.kunicmarko20.idea.lendahelper.actions.generation.handlers;
 
-import com.github.kunicmarko20.idea.lendahelper.service.MemberChooser;
+import com.github.kunicmarko20.idea.lendahelper.service.PropertyChooser;
 import com.intellij.codeInsight.hint.HintManager;
 import com.jetbrains.php.lang.actions.PhpNamedElementNode;
 import org.jetbrains.annotations.NotNull;
@@ -14,7 +14,7 @@ public class ToStringHandler extends ActionHandler {
         PhpNamedElementNode[] properties = this.classProperties;
 
         if (properties.length > 1) {
-            properties = MemberChooser.choose(properties, this.project, false);
+            properties = PropertyChooser.choose(properties, this.project, false);
         }
 
         return this.TEMPLATE
