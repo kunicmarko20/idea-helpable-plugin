@@ -13,9 +13,9 @@ import java.util.List;
 
 public class MemberChooser {
     @Nullable
-    public static PhpNamedElementNode[] choose(PhpNamedElementNode[] members, Project project) {
+    public static PhpNamedElementNode[] choose(PhpNamedElementNode[] members, Project project, boolean allowMultiSelection) {
         PhpNamedElementNode[] nodes = (PhpNamedElementNode[]) fixOrderToBeAsOriginalFiles(members).toArray(new PhpNamedElementNode[members.length]);
-        com.intellij.ide.util.MemberChooser<PhpNamedElementNode> chooser = new com.intellij.ide.util.MemberChooser<PhpNamedElementNode>(nodes, false, true, project);
+        com.intellij.ide.util.MemberChooser<PhpNamedElementNode> chooser = new com.intellij.ide.util.MemberChooser<PhpNamedElementNode>(nodes, false, allowMultiSelection, project);
         chooser.setTitle("Choose Fields");
         chooser.setCopyJavadocVisible(false);
         chooser.show();
@@ -23,8 +23,13 @@ public class MemberChooser {
         return list == null ? null : (PhpNamedElementNode[]) list.toArray(new PhpNamedElementNode[0]);
     }
 
+    public static PhpNamedElementNode[] choose(PhpNamedElementNode[] members, Project project) {
+        return choose(members, project, true);
+    }
+
     private static Collection<PhpNamedElementNode> fixOrderToBeAsOriginalFiles(PhpNamedElementNode[] selected) {
         List<PhpNamedElementNode> newSelected = ContainerUtil.newArrayList(selected);
+
         Collections.sort(newSelected, (o1, o2) -> {
             PsiElement psiElement = o1.getPsiElement();
             PsiElement psiElement2 = o2.getPsiElement();
@@ -32,6 +37,7 @@ public class MemberChooser {
             PsiFile containingFile2 = psiElement2.getContainingFile();
             return containingFile == containingFile2 ? psiElement.getTextOffset() - psiElement2.getTextOffset() : containingFile.getName().compareTo(containingFile2.getName());
         });
+
         return newSelected;
     }
 }

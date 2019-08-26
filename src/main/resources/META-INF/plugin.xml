@@ -10,9 +10,19 @@
   <depends>com.intellij.modules.platform</depends>
 
   <actions>
-    <action id="com.github.kunicmarko20.idea.lendahelper.actions.generators.Equals"
-            class="com.github.kunicmarko20.idea.lendahelper.actions.generators.Equals"
+    <action id="com.github.kunicmarko20.idea.lendahelper.actions.generation.EqualsAction"
+            class="com.github.kunicmarko20.idea.lendahelper.actions.generation.EqualsAction"
             text="Equals">
+      <add-to-group group-id="GenerateGroup" anchor="last"/>
+    </action>
+    <action id="com.github.kunicmarko20.idea.lendahelper.actions.generation.ToStringAction"
+            class="com.github.kunicmarko20.idea.lendahelper.actions.generation.ToStringAction"
+            text="ToString">
+      <add-to-group group-id="GenerateGroup" anchor="last"/>
+    </action>
+    <action id="com.github.kunicmarko20.idea.lendahelper.actions.generation.ToIntegerAction"
+            class="com.github.kunicmarko20.idea.lendahelper.actions.generation.ToIntegerAction"
+            text="ToInteger">
       <add-to-group group-id="GenerateGroup" anchor="last"/>
     </action>
   </actions>
