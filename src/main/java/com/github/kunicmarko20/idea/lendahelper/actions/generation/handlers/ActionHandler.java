@@ -3,6 +3,7 @@ package com.github.kunicmarko20.idea.lendahelper.actions.generation.handlers;
 import com.github.kunicmarko20.idea.lendahelper.service.ClassPropertyFinder;
 import com.github.kunicmarko20.idea.lendahelper.service.EditorPositionFinder;
 import com.intellij.lang.LanguageCodeInsightActionHandler;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiFile;
@@ -48,8 +49,14 @@ abstract class ActionHandler implements LanguageCodeInsightActionHandler {
         int insertPosition = EditorPositionFinder.suitablePosition(editor, this.file);
         int endPosition = insertPosition + body.length();
 
-        editor.getDocument().insertString(insertPosition, body);
-        CodeStyleManager.getInstance(project).reformatText(this.file, insertPosition, endPosition);
+        ApplicationManager.getApplication().runWriteAction(() -> {
+            editor.getDocument().insertString(insertPosition, body);
+            CodeStyleManager.getInstance(project).reformatText(this.file, insertPosition, endPosition);
+        });
+    }
+
+    public boolean startInWriteAction() {
+        return false;
     }
 
     @NotNull
