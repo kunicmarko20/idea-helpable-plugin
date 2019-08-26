@@ -29,6 +29,8 @@ public class ToHandler extends ActionHandler {
     }
 
     private String normalizeTypeName(String type) {
+        type = type.replace("?", "");
+
         switch (type) {
             case "bool":
                 return "Boolean";
