@@ -25,6 +25,11 @@
             text="Wither">
       <add-to-group group-id="GenerateGroup" anchor="last"/>
     </action>
+    <action id="com.github.kunicmarko20.idea.lendahelper.actions.generation.FactoryMethodAction"
+            class="com.github.kunicmarko20.idea.lendahelper.actions.generation.FactoryMethodAction"
+            text="Factory Method">
+      <add-to-group group-id="GenerateGroup" anchor="last"/>
+    </action>
   </actions>
 
 </idea-plugin>
