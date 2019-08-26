@@ -37,6 +37,11 @@ public class EqualsHandler extends ActionHandler {
             return false;
         }
 
+        if (this.methodExists("equals")) {
+            HintManager.getInstance().showErrorHint(this.editor, "Equals method already exists.");
+            return false;
+        }
+
         return true;
     }
 }

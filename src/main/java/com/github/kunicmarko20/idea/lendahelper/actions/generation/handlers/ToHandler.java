@@ -21,11 +21,17 @@ public class ToHandler extends ActionHandler {
         }
 
         String propertyType = PropertyTypeFinder.find((Field) properties[0].getPsiElement(), this.project);
+        String normalizedTypeName = WordUtils.capitalize(this.normalizeTypeName(propertyType));
+
+        if (this.methodExists("to" + normalizedTypeName)) {
+            HintManager.getInstance().showErrorHint(this.editor, "Method already exists.");
+            return "";
+        }
 
         return this.TEMPLATE
                 .replace("%PROPERTY%", properties[0].getText())
                 .replace("%TYPE%", propertyType)
-                .replace("%TYPE_METHOD_NAME%", WordUtils.capitalize(this.normalizeTypeName(propertyType)));
+                .replace("%TYPE_METHOD_NAME%", normalizedTypeName);
     }
 
     private String normalizeTypeName(String type) {

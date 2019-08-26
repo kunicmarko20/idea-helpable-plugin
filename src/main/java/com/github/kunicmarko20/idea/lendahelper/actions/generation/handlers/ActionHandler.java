@@ -11,8 +11,13 @@ import com.intellij.psi.codeStyle.CodeStyleManager;
 import com.jetbrains.php.lang.actions.PhpNamedElementNode;
 import com.jetbrains.php.lang.psi.PhpCodeEditUtil;
 import com.jetbrains.php.lang.psi.PhpFile;
+import com.jetbrains.php.lang.psi.elements.Method;
 import com.jetbrains.php.lang.psi.elements.PhpClass;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 abstract class ActionHandler implements LanguageCodeInsightActionHandler {
     protected PhpFile file;
@@ -20,6 +25,7 @@ abstract class ActionHandler implements LanguageCodeInsightActionHandler {
     protected PhpNamedElementNode[] classProperties;
     protected Editor editor;
     protected Project project;
+    protected List<String> existingMethods;
 
     @Override
     public boolean isValidFor(Editor editor, PsiFile file) {
@@ -39,6 +45,7 @@ abstract class ActionHandler implements LanguageCodeInsightActionHandler {
         this.file = (PhpFile) file;
         this.phpClass = PhpCodeEditUtil.findClassAtCaret(editor, this.file);
         this.classProperties = ClassPropertyFinder.find(this.phpClass);
+        this.existingMethods();
 
         if (!this.isValid()) {
             return;
@@ -53,6 +60,21 @@ abstract class ActionHandler implements LanguageCodeInsightActionHandler {
             editor.getDocument().insertString(insertPosition, body);
             CodeStyleManager.getInstance(project).reformatText(this.file, insertPosition, endPosition);
         });
+    }
+
+    private void existingMethods() {
+        Collection<Method> methods = this.phpClass.getMethods();
+        List<String> existingMethods = new ArrayList<>();
+
+        for (Method method : methods) {
+            existingMethods.add(method.getName());
+        }
+
+        this.existingMethods = existingMethods;
+    }
+
+    protected boolean methodExists(String method) {
+        return this.existingMethods.contains(method);
     }
 
     public boolean startInWriteAction() {

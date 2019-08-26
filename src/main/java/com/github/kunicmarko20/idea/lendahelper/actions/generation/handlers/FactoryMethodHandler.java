@@ -59,6 +59,11 @@ public class FactoryMethodHandler extends ActionHandler {
             return false;
         }
 
+        if (this.methodExists("with")) {
+            HintManager.getInstance().showErrorHint(this.editor, "With method already exists.");
+            return false;
+        }
+
         return true;
     }
 }
