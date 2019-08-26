@@ -15,14 +15,9 @@
             text="Equals">
       <add-to-group group-id="GenerateGroup" anchor="last"/>
     </action>
-    <action id="com.github.kunicmarko20.idea.lendahelper.actions.generation.ToStringAction"
-            class="com.github.kunicmarko20.idea.lendahelper.actions.generation.ToStringAction"
-            text="ToString">
-      <add-to-group group-id="GenerateGroup" anchor="last"/>
-    </action>
-    <action id="com.github.kunicmarko20.idea.lendahelper.actions.generation.ToIntegerAction"
-            class="com.github.kunicmarko20.idea.lendahelper.actions.generation.ToIntegerAction"
-            text="ToInteger">
+    <action id="com.github.kunicmarko20.idea.lendahelper.actions.generation.ToAction"
+            class="com.github.kunicmarko20.idea.lendahelper.actions.generation.ToAction"
+            text="To">
       <add-to-group group-id="GenerateGroup" anchor="last"/>
     </action>
     <action id="com.github.kunicmarko20.idea.lendahelper.actions.generation.WitherAction"
