@@ -55,7 +55,7 @@ public class FactoryMethodHandler extends ActionHandler {
     @NotNull
     protected boolean isValid() {
         if (this.classProperties.length < 1) {
-            HintManager.getInstance().showErrorHint(this.editor, "At least one property is needed to generate With* method.");
+            HintManager.getInstance().showErrorHint(this.editor, "At least one property is needed to generate Factory method.");
             return false;
         }
 

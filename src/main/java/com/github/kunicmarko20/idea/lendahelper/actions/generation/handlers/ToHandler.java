@@ -45,7 +45,7 @@ public class ToHandler extends ActionHandler {
     @NotNull
     protected boolean isValid() {
         if (this.classProperties.length < 1) {
-            HintManager.getInstance().showErrorHint(this.editor, "At least one property is needed to generate ToInteger method.");
+            HintManager.getInstance().showErrorHint(this.editor, "At least one property is needed to generate To* method.");
             return false;
         }
 

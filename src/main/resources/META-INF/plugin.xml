@@ -17,12 +17,12 @@
     </action>
     <action id="com.github.kunicmarko20.idea.lendahelper.actions.generation.ToAction"
             class="com.github.kunicmarko20.idea.lendahelper.actions.generation.ToAction"
-            text="To">
+            text="To*">
       <add-to-group group-id="GenerateGroup" anchor="last"/>
     </action>
     <action id="com.github.kunicmarko20.idea.lendahelper.actions.generation.WitherAction"
             class="com.github.kunicmarko20.idea.lendahelper.actions.generation.WitherAction"
-            text="Wither">
+            text="With*">
       <add-to-group group-id="GenerateGroup" anchor="last"/>
     </action>
     <action id="com.github.kunicmarko20.idea.lendahelper.actions.generation.FactoryMethodAction"
