@@ -1,4 +1,4 @@
-package com.github.kunicmarko20.idea.lendahelper.service;
+package com.github.kunicmarko20.idea.helpable.service;
 
 import com.jetbrains.php.lang.actions.PhpNamedElementNode;
 import com.jetbrains.php.lang.psi.elements.Field;

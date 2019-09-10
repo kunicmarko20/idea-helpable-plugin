@@ -1,6 +1,6 @@
 <idea-plugin>
-  <id>com.github.kunicmarko20.idea.lendahelper</id>
-  <name>LendaHelper</name>
+  <id>com.github.kunicmarko20.idea.helpable</id>
+  <name>Helpable</name>
   <version>0.1.0</version>
   <vendor email="kunicmarko20@gmail.com" url="https://github.com/kunicmarko20">Marko Kunic</vendor>
 
@@ -10,23 +10,23 @@
   <depends>com.intellij.modules.platform</depends>
 
   <actions>
-    <action id="com.github.kunicmarko20.idea.lendahelper.actions.generation.EqualsAction"
-            class="com.github.kunicmarko20.idea.lendahelper.actions.generation.EqualsAction"
+    <action id="com.github.kunicmarko20.idea.helpable.actions.generation.EqualsAction"
+            class="com.github.kunicmarko20.idea.helpable.actions.generation.EqualsAction"
             text="Equals">
       <add-to-group group-id="GenerateGroup" anchor="last"/>
     </action>
-    <action id="com.github.kunicmarko20.idea.lendahelper.actions.generation.ToAction"
-            class="com.github.kunicmarko20.idea.lendahelper.actions.generation.ToAction"
+    <action id="com.github.kunicmarko20.idea.helpable.actions.generation.ToAction"
+            class="com.github.kunicmarko20.idea.helpable.actions.generation.ToAction"
             text="To*">
       <add-to-group group-id="GenerateGroup" anchor="last"/>
     </action>
-    <action id="com.github.kunicmarko20.idea.lendahelper.actions.generation.WitherAction"
-            class="com.github.kunicmarko20.idea.lendahelper.actions.generation.WitherAction"
+    <action id="com.github.kunicmarko20.idea.helpable.actions.generation.WitherAction"
+            class="com.github.kunicmarko20.idea.helpable.actions.generation.WitherAction"
             text="With*">
       <add-to-group group-id="GenerateGroup" anchor="last"/>
     </action>
-    <action id="com.github.kunicmarko20.idea.lendahelper.actions.generation.FactoryMethodAction"
-            class="com.github.kunicmarko20.idea.lendahelper.actions.generation.FactoryMethodAction"
+    <action id="com.github.kunicmarko20.idea.helpable.actions.generation.FactoryMethodAction"
+            class="com.github.kunicmarko20.idea.helpable.actions.generation.FactoryMethodAction"
             text="Factory Method">
       <add-to-group group-id="GenerateGroup" anchor="last"/>
     </action>

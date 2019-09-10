@@ -1,4 +1,4 @@
-package com.github.kunicmarko20.idea.lendahelper.service;
+package com.github.kunicmarko20.idea.helpable.service;
 
 import com.intellij.openapi.editor.Editor;
 import com.intellij.psi.PsiElement;

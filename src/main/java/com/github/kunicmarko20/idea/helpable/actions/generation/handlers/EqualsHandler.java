@@ -1,4 +1,4 @@
-package com.github.kunicmarko20.idea.lendahelper.actions.generation.handlers;
+package com.github.kunicmarko20.idea.helpable.actions.generation.handlers;
 
 import com.intellij.codeInsight.hint.HintManager;
 import org.jetbrains.annotations.NotNull;

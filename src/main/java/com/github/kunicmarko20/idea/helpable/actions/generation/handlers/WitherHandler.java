@@ -1,7 +1,7 @@
-package com.github.kunicmarko20.idea.lendahelper.actions.generation.handlers;
+package com.github.kunicmarko20.idea.helpable.actions.generation.handlers;
 
-import com.github.kunicmarko20.idea.lendahelper.service.PropertyChooser;
-import com.github.kunicmarko20.idea.lendahelper.service.PropertyTypeFinder;
+import com.github.kunicmarko20.idea.helpable.service.PropertyChooser;
+import com.github.kunicmarko20.idea.helpable.service.PropertyTypeFinder;
 import com.intellij.codeInsight.hint.HintManager;
 import com.jetbrains.php.lang.actions.PhpNamedElementNode;
 import com.jetbrains.php.lang.psi.elements.Field;

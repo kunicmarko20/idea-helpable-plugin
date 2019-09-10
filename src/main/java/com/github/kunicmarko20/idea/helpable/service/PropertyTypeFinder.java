@@ -1,4 +1,4 @@
-package com.github.kunicmarko20.idea.lendahelper.service;
+package com.github.kunicmarko20.idea.helpable.service;
 
 import com.intellij.openapi.project.Project;
 import com.jetbrains.php.codeInsight.PhpCodeInsightUtil;

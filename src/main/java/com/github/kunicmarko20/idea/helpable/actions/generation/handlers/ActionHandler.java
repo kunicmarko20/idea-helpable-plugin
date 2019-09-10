@@ -1,7 +1,7 @@
-package com.github.kunicmarko20.idea.lendahelper.actions.generation.handlers;
+package com.github.kunicmarko20.idea.helpable.actions.generation.handlers;
 
-import com.github.kunicmarko20.idea.lendahelper.service.ClassPropertyFinder;
-import com.github.kunicmarko20.idea.lendahelper.service.EditorPositionFinder;
+import com.github.kunicmarko20.idea.helpable.service.ClassPropertyFinder;
+import com.github.kunicmarko20.idea.helpable.service.EditorPositionFinder;
 import com.intellij.lang.LanguageCodeInsightActionHandler;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.Editor;
