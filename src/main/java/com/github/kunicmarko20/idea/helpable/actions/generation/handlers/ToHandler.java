@@ -12,12 +12,15 @@ public class ToHandler extends ActionHandler {
     final private String TEMPLATE = "public function to%TYPE_METHOD_NAME%():%TYPE%{return $this->%PROPERTY%;}";
 
     @Override
-    @NotNull
     protected String body() {
         PhpNamedElementNode[] properties = this.classProperties;
 
         if (properties.length > 1) {
             properties = PropertyChooser.choose(properties, this.project, false);
+        }
+
+        if (properties == null) {
+            return null;
         }
 
         String propertyType = PropertyTypeFinder.find((Field) properties[0].getPsiElement(), this.project);

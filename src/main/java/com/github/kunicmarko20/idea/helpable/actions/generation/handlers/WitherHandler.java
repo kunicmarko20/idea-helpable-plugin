@@ -15,12 +15,15 @@ public class WitherHandler extends ActionHandler {
     final private String TEMPLATE = "public function with%CAPITALIZED_PROPERTY%(%PROPERTY_TYPE% $%PROPERTY%):self{$instance = clone $this; $instance->%PROPERTY% = $%PROPERTY%;return $instance;}";
 
     @Override
-    @NotNull
     protected String body() {
         PhpNamedElementNode[] properties = this.classProperties;
 
         if (properties.length > 1) {
             properties = PropertyChooser.choose(this.filteredProperties(), this.project);
+        }
+
+        if (properties == null) {
+            return null;
         }
 
         StringBuilder body = new StringBuilder();

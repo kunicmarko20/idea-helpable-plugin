@@ -53,6 +53,10 @@ abstract class ActionHandler implements LanguageCodeInsightActionHandler {
 
         String body = this.body();
 
+        if (body == null) {
+            return;
+        }
+
         int insertPosition = EditorPositionFinder.suitablePosition(editor, this.file);
         int endPosition = insertPosition + body.length();
 
@@ -81,7 +85,6 @@ abstract class ActionHandler implements LanguageCodeInsightActionHandler {
         return false;
     }
 
-    @NotNull
     protected abstract String body();
 
     @NotNull
