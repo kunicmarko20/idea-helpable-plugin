@@ -1,0 +1,41 @@
+buildscript {
+    repositories {
+        mavenCentral()
+
+        maven { url 'https://dl.bintray.com/jetbrains/intellij-plugin-service' }
+    }
+}
+
+plugins {
+    id 'org.jetbrains.intellij' version '0.4.10'
+}
+
+group 'com.github.kunicmarko20.idea.helpable'
+version '0.2'
+
+apply plugin: 'org.jetbrains.intellij'
+
+intellij {
+    version ideaVersion
+    pluginName 'Helpable'
+
+    plugins = [
+            "com.jetbrains.php:${phpPluginVersion}",
+            'java',
+    ]
+}
+
+patchPluginXml {
+    sinceBuild '192'
+    changeNotes """
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>"""
+}
+
+wrapper {
+    gradleVersion '5.2.1'
+}
+
+jar {
+    baseName = "helpable"
+}

@@ -12,7 +12,7 @@ import java.util.TreeMap;
 public class ClassPropertyFinder {
     @NotNull
     public static PhpNamedElementNode[] find(@NotNull PhpClass phpClass) {
-        TreeMap<String, PhpNamedElementNode> nodes = new TreeMap();
+        TreeMap<String, PhpNamedElementNode> nodes = new TreeMap<>();
         Collection<Field> fields = phpClass.getFields();
         Iterator fieldIterator = fields.iterator();
 

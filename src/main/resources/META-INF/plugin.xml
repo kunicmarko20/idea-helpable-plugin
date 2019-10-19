@@ -1,10 +1,10 @@
 <idea-plugin>
   <id>com.github.kunicmarko20.idea.helpable</id>
   <name>Helpable</name>
-  <version>0.1.0</version>
+  <version>0.2.0</version>
   <vendor email="kunicmarko20@gmail.com" url="https://github.com/kunicmarko20">Marko Kunic</vendor>
 
-  <idea-version since-build="173.0"/>
+  <idea-version since-build="192.0"/>
 
   <depends>com.jetbrains.php</depends>
   <depends>com.intellij.modules.platform</depends>
