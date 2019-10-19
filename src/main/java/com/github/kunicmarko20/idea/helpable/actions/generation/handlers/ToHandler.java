@@ -7,10 +7,10 @@ import com.jetbrains.php.lang.actions.PhpNamedElementNode;
 import com.jetbrains.php.lang.psi.elements.Field;
 import org.apache.commons.lang.WordUtils;
 import org.jetbrains.annotations.NotNull;
+import org.jtwig.JtwigModel;
+import org.jtwig.JtwigTemplate;
 
 public class ToHandler extends ActionHandler {
-    final private String TEMPLATE = "public function to%TYPE_METHOD_NAME%():%TYPE%{return $this->%PROPERTY%;}";
-
     @Override
     protected String body() {
         PhpNamedElementNode[] properties = this.classProperties;
@@ -31,10 +31,13 @@ public class ToHandler extends ActionHandler {
             return "";
         }
 
-        return this.TEMPLATE
-                .replace("%PROPERTY%", properties[0].getText())
-                .replace("%TYPE%", propertyType)
-                .replace("%TYPE_METHOD_NAME%", normalizedTypeName);
+        JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/to.twig.html");
+        JtwigModel model = JtwigModel.newModel()
+                .with("property", properties[0].getText())
+                .with("type", propertyType)
+                .with("type_method_name", normalizedTypeName);
+
+        return template.render(model);
     }
 
     private String normalizeTypeName(String type) {

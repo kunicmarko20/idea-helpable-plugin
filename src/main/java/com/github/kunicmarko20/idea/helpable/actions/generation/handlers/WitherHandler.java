@@ -7,13 +7,13 @@ import com.jetbrains.php.lang.actions.PhpNamedElementNode;
 import com.jetbrains.php.lang.psi.elements.Field;
 import org.apache.commons.lang.WordUtils;
 import org.jetbrains.annotations.NotNull;
+import org.jtwig.JtwigModel;
+import org.jtwig.JtwigTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class WitherHandler extends ActionHandler {
-    final private String TEMPLATE = "public function with%CAPITALIZED_PROPERTY%(%PROPERTY_TYPE% $%PROPERTY%):self{$instance = clone $this; $instance->%PROPERTY% = $%PROPERTY%;return $instance;}";
-
     @Override
     protected String body() {
         PhpNamedElementNode[] properties = this.classProperties;
@@ -27,17 +27,20 @@ public class WitherHandler extends ActionHandler {
         }
 
         StringBuilder body = new StringBuilder();
+        JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/with.twig.html");
+
         for (PhpNamedElementNode property : properties) {
             body.append(
-                TEMPLATE.replace(
-                    "%CAPITALIZED_PROPERTY%",
-                    WordUtils.capitalize(property.getText())
-                ).replace(
-                    "%PROPERTY%",
-                    property.getText()
-                ).replace(
-                    "%PROPERTY_TYPE%",
-                    PropertyTypeFinder.find((Field) property.getPsiElement(), this.project)
+                template.render(
+                    JtwigModel.newModel()
+                            .with("property", property.getText())
+                            .with(
+                                    "property_type",
+                                    PropertyTypeFinder.find(
+                                            (Field) property.getPsiElement(),
+                                            this.project
+                                    )
+                            )
                 )
             );
         }

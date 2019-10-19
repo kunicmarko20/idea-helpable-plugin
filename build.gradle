@@ -1,19 +1,29 @@
-buildscript {
-    repositories {
-        mavenCentral()
-
-        maven { url 'https://dl.bintray.com/jetbrains/intellij-plugin-service' }
-    }
-}
-
 plugins {
     id 'org.jetbrains.intellij' version '0.4.10'
+    id 'com.github.johnrengelman.shadow' version '5.1.0'
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+
+    maven { url 'https://dl.bintray.com/jetbrains/intellij-plugin-service' }
+    maven { url 'https://dl.bintray.com/jtwig/maven' }
+}
+
+dependencies {
+    compile('org.jtwig:jtwig-core:5.87.0.RELEASE') {
+        exclude group: 'org.slf4j'
+    }
 }
 
 group 'com.github.kunicmarko20.idea.helpable'
 version '0.2'
 
 apply plugin: 'org.jetbrains.intellij'
+apply plugin: 'java'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 intellij {
     version ideaVersion
@@ -38,4 +48,8 @@ wrapper {
 
 jar {
     baseName = "helpable"
+}
+
+shadowJar {
+    classifier = null
 }

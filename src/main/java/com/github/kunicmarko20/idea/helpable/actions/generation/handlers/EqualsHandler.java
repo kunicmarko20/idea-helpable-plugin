@@ -2,31 +2,19 @@ package com.github.kunicmarko20.idea.helpable.actions.generation.handlers;
 
 import com.intellij.codeInsight.hint.HintManager;
 import org.jetbrains.annotations.NotNull;
+import org.jtwig.JtwigModel;
+import org.jtwig.JtwigTemplate;
 
 public class EqualsHandler extends ActionHandler {
-    final private String TEMPLATE = "public function equals(%TYPE% $other):bool{return %BODY%;}";
-    final private String EXPRESSION = "$this->%PROPERTY% === $other->%PROPERTY%";
-
     @Override
     @NotNull
     protected String body() {
-        StringBuilder body = new StringBuilder();
+        JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/equals.twig.html");
+        JtwigModel model = JtwigModel.newModel()
+                .with("type", this.phpClass.getName())
+                .with("properties", this.classProperties);
 
-        int propertiesLength = this.classProperties.length;
-        for (int i = 0; i < propertiesLength; i++) {
-            if (i > 0) {
-                body.append("&& ");
-            }
-
-            body.append(EXPRESSION.replace(
-                "%PROPERTY%",
-                this.classProperties[i].getText()
-            ));
-        }
-
-        return this.TEMPLATE
-                .replace("%TYPE%", this.phpClass.getName())
-                .replace("%BODY%", body);
+        return template.render(model);
     }
 
     @Override
