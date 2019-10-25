@@ -1,17 +1,13 @@
 package com.github.kunicmarko20.idea.helpable.actions.generation.handlers;
 
 import com.github.kunicmarko20.idea.helpable.service.CaseConverter;
-import com.github.kunicmarko20.idea.helpable.service.ClassConstantsFinder;
-import com.intellij.codeInsight.hint.HintManager;
+import com.github.kunicmarko20.idea.helpable.service.ClassFieldFinder;
 import com.jetbrains.php.lang.actions.PhpNamedElementNode;
-import org.apache.commons.lang.WordUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jtwig.JtwigModel;
 import org.jtwig.JtwigTemplate;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class EnumHandler extends ActionHandler {
     @Override
@@ -21,7 +17,7 @@ public class EnumHandler extends ActionHandler {
 
         JtwigModel model = JtwigModel.newModel()
                 .with("type", this.phpClass.getName())
-                .with("variants", this.camelCasedVariants(ClassConstantsFinder.find(this.phpClass)));
+                .with("variants", this.camelCasedVariants(ClassFieldFinder.constants(this.phpClass)));
 
         return template.render(model);
     }

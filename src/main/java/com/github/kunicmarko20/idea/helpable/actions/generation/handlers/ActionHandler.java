@@ -1,6 +1,6 @@
 package com.github.kunicmarko20.idea.helpable.actions.generation.handlers;
 
-import com.github.kunicmarko20.idea.helpable.service.ClassPropertyFinder;
+import com.github.kunicmarko20.idea.helpable.service.ClassFieldFinder;
 import com.github.kunicmarko20.idea.helpable.service.EditorPositionFinder;
 import com.intellij.lang.LanguageCodeInsightActionHandler;
 import com.intellij.openapi.application.ApplicationManager;
@@ -44,7 +44,7 @@ abstract class ActionHandler implements LanguageCodeInsightActionHandler {
         this.editor = editor;
         this.file = (PhpFile) file;
         this.phpClass = PhpCodeEditUtil.findClassAtCaret(editor, this.file);
-        this.classProperties = ClassPropertyFinder.find(this.phpClass);
+        this.classProperties = ClassFieldFinder.properties(this.phpClass);
         this.existingMethods();
 
         if (!this.isValid()) {
