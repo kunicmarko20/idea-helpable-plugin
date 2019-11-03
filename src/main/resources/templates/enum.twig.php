@@ -1,4 +1,4 @@
-private const ALL_MAP = [{% for variant in variants %}
+private const ALL = [{% for variant in variants %}
     self::{{ variant }},
 {%- endfor %}
 ];
@@ -9,13 +9,13 @@ private const ALL_MAP = [{% for variant in variants %}
 private $value;
 
 /**
-* @var {{ type }}[]
+* @var array<string, {{ type }}>
 */
 private static $lazyLoad = [];
 
 private function __construct(string $value)
 {
-    \Assert\Assert::that($value)->inArray(self::ALL_MAP);
+    \Assert\Assert::that($value)->inArray(self::ALL);
 
     $this->value = $value;
 }
@@ -27,7 +27,7 @@ public static function fromString(string $value): self
 {% for camel_cased_variant, variant in variants %}
     public static function {{ camel_cased_variant }}(): self
     {
-        return self::lazyLoad((self::{{ variant }}));
+        return self::lazyLoad(self::{{ variant }});
     }
 {% endfor %}
 private static function lazyLoad(string $value): self

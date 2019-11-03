@@ -1,9 +1,8 @@
 package com.github.kunicmarko20.idea.helpable.actions.generation;
 
-import com.github.kunicmarko20.idea.helpable.dialog.NewJmsConfigurationDialog;
+import com.github.kunicmarko20.idea.helpable.dialog.NewJmsDialog;
 import com.github.kunicmarko20.idea.helpable.service.ClassFieldFinder;
 import com.github.kunicmarko20.idea.helpable.service.PropertyTypeFinder;
-import com.intellij.codeInsight.hint.HintManager;
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.IdeView;
 import com.intellij.ide.highlighter.XmlFileType;
@@ -19,7 +18,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jtwig.JtwigModel;
 import org.jtwig.JtwigTemplate;
 
-import java.util.Collection;
 import java.util.HashMap;
 
 public class NewJmsConfigurationAction extends AnAction {
@@ -36,7 +34,7 @@ public class NewJmsConfigurationAction extends AnAction {
     }
 
     public void invoke(@NotNull Project project, @NotNull PsiDirectory directory) {
-        NewJmsConfigurationDialog dialog = new NewJmsConfigurationDialog(project);
+        NewJmsDialog dialog = new NewJmsDialog(project);
 
         if (!dialog.showAndGet()) {
             return;

@@ -1,6 +1,6 @@
 package com.github.kunicmarko20.idea.helpable.actions.generation;
 
-import com.github.kunicmarko20.idea.helpable.dialog.NewJmsConfigurationDialog;
+import com.github.kunicmarko20.idea.helpable.dialog.NewJmsDialog;
 import com.intellij.ide.IdeView;
 import com.intellij.openapi.actionSystem.*;
 import com.intellij.openapi.application.ApplicationManager;
@@ -32,7 +32,7 @@ public class NewJmsHandlerAction extends AnAction {
     }
 
     public void invoke(@NotNull Project project, @NotNull PsiDirectory directory) {
-        NewJmsConfigurationDialog dialog = new NewJmsConfigurationDialog(project);
+        NewJmsDialog dialog = new NewJmsDialog(project);
 
         if (!dialog.showAndGet()) {
             return;

@@ -27,7 +27,7 @@ public class WitherHandler extends ActionHandler {
         }
 
         StringBuilder body = new StringBuilder();
-        JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/with.twig.html");
+        JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/with.twig.php");
 
         for (PhpNamedElementNode property : properties) {
             body.append(

@@ -9,7 +9,7 @@ public class EqualsHandler extends ActionHandler {
     @Override
     @NotNull
     protected String body() {
-        JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/equals.twig.html");
+        JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/equals.twig.php");
         JtwigModel model = JtwigModel.newModel()
                 .with("type", this.phpClass.getName())
                 .with("properties", this.classProperties);

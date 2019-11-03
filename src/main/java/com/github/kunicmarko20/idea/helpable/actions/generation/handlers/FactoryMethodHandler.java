@@ -26,7 +26,7 @@ public class FactoryMethodHandler extends ActionHandler {
             );
         }
 
-        JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/factory_method.twig.html");
+        JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/factory_method.twig.php");
         JtwigModel model = JtwigModel.newModel()
                 .with("properties", properties);
 

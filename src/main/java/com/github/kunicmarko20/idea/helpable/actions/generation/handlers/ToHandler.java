@@ -31,7 +31,7 @@ public class ToHandler extends ActionHandler {
             return "";
         }
 
-        JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/to.twig.html");
+        JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/to.twig.php");
         JtwigModel model = JtwigModel.newModel()
                 .with("property", properties[0].getText())
                 .with("type", propertyType)

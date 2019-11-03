@@ -14,12 +14,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Collection;
 
-public class NewJmsConfigurationDialog extends DialogWrapper {
+public class NewJmsDialog extends DialogWrapper {
 
     private final EditorTextField classSelectionTextField;
     private final Project project;
 
-    public NewJmsConfigurationDialog(Project project) {
+    public NewJmsDialog(Project project) {
         super(true);
         this.project = project;
         this.classSelectionTextField = new EditorTextField("", project, FileTypes.PLAIN_TEXT);
