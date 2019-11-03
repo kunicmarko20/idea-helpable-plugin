@@ -36,12 +36,15 @@
       <add-to-group group-id="GenerateGroup" anchor="last"/>
     </action>
 
-    <action id="com.github.kunicmarko20.idea.helpable.actions.generation.NewJmsConfigurationAction"
-            class="com.github.kunicmarko20.idea.helpable.actions.generation.NewJmsConfigurationAction"
-            text="JMS Configuration">
+    <group id="JMSSerializerGroup" text="JMS Serializer" popup="true">
+      <action id="com.github.kunicmarko20.idea.helpable.actions.generation.NewJmsConfigurationAction"
+              class="com.github.kunicmarko20.idea.helpable.actions.generation.NewJmsConfigurationAction">
+      </action>
+      <action id="com.github.kunicmarko20.idea.helpable.actions.generation.NewJmsHandlerAction"
+              class="com.github.kunicmarko20.idea.helpable.actions.generation.NewJmsHandlerAction">
+      </action>
       <add-to-group group-id="NewGroup" anchor="last"/>
-    </action>
-
+    </group>
   </actions>
 
 </idea-plugin>
