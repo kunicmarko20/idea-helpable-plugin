@@ -11,12 +11,11 @@ import java.util.function.Function;
 public class ClassFieldFinder {
     @NotNull
     public static PhpNamedElementNode[] constants(@NotNull PhpClass phpClass) {
-        return find(phpClass, Field::isConstant);
+        return find(phpClass.getOwnFields(), Field::isConstant);
     }
 
-    private static PhpNamedElementNode[] find(@NotNull PhpClass phpClass, Function<Field, Boolean> filter) {
+    private static PhpNamedElementNode[] find(@NotNull Field[] fields, Function<Field, Boolean> filter) {
         TreeMap<String, PhpNamedElementNode> nodes = new TreeMap<>();
-        Field[] fields = phpClass.getOwnFields();
 
         for (Field field : fields) {
             if (filter.apply(field)) {
@@ -28,7 +27,12 @@ public class ClassFieldFinder {
     }
 
     @NotNull
-    public static PhpNamedElementNode[] properties(@NotNull PhpClass phpClass) {
-        return find(phpClass, (field) -> !field.isConstant());
+    public static PhpNamedElementNode[] ownedProperties(@NotNull PhpClass phpClass) {
+        return find(phpClass.getOwnFields(), (field) -> !field.isConstant());
+    }
+
+    @NotNull
+    public static PhpNamedElementNode[] allProperties(@NotNull PhpClass phpClass) {
+        return find(phpClass.getFields().toArray(new Field[0]), (field) -> !field.isConstant());
     }
 }

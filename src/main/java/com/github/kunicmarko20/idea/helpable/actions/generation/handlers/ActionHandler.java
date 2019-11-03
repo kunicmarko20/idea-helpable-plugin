@@ -44,7 +44,7 @@ abstract class ActionHandler implements LanguageCodeInsightActionHandler {
         this.editor = editor;
         this.file = (PhpFile) file;
         this.phpClass = PhpCodeEditUtil.findClassAtCaret(editor, this.file);
-        this.classProperties = ClassFieldFinder.properties(this.phpClass);
+        this.classProperties = ClassFieldFinder.ownedProperties(this.phpClass);
         this.existingMethods();
 
         if (!this.isValid()) {

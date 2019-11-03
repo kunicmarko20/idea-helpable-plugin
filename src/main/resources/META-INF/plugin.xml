@@ -35,6 +35,13 @@
             text="Enum">
       <add-to-group group-id="GenerateGroup" anchor="last"/>
     </action>
+
+    <action id="com.github.kunicmarko20.idea.helpable.actions.generation.NewJmsConfigurationAction"
+            class="com.github.kunicmarko20.idea.helpable.actions.generation.NewJmsConfigurationAction"
+            text="JMS Configuration">
+      <add-to-group group-id="NewGroup" anchor="last"/>
+    </action>
+
   </actions>
 
 </idea-plugin>
