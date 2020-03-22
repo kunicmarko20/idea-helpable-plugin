@@ -54,7 +54,6 @@ public class NewJmsHandlerAction extends AnAction {
             .with("namespace", namespaces.isEmpty() ? "" : namespaces.get(0))
             .with("handling_type_fqcn", phpClass.getFQN().substring(1))
             .with("handling_type_name", phpClass.getName())
-            .with("handling_type_variable_name", "$" + WordUtils.uncapitalize(phpClass.getName()))
             .with("name", handlerName)
             .with("factory_method", this.factoryMethod(phpClass))
             .with("to_method", toMethod.getName())

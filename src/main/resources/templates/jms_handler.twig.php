@@ -30,13 +30,13 @@ final class {{ name }} implements SubscribingHandlerInterface
         ];
     }
 
-    public function deserialize(JsonDeserializationVisitor $visitor, {{ to_method_type }} {{ handling_type_variable_name }}): {{ handling_type_name }}
+    public function deserialize(JsonDeserializationVisitor $visitor, {{ to_method_type }} $value): {{ handling_type_name }}
     {
-        return {{ handling_type_name }}::{{ factory_method }}({{ handling_type_variable_name }});
+        return {{ handling_type_name }}::{{ factory_method }}($value));
     }
 
-    public function serialize(JsonSerializationVisitor $visitor, {{ handling_type_name }} {{ handling_type_variable_name }}): {{ to_method_type }}
+    public function serialize(JsonSerializationVisitor $visitor, {{ handling_type_name }} $value): {{ to_method_type }}
     {
-        return {{ handling_type_variable_name }}->{{ to_method }}();
+        return $value->{{ to_method }}();
     }
 }
