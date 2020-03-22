@@ -1,5 +1,5 @@
 private const ALL = [{% for variant in variants %}
-    self::{{ variant }},
+    self::{{ variant }} => true,
 {%- endfor %}
 ];
 
@@ -15,7 +15,7 @@ private static $lazyLoad = [];
 
 private function __construct(string $value)
 {
-    \Assert\Assert::that($value)->inArray(self::ALL);
+    \Assert\Assert::that(self::ALL)->keyIsset($value);
 
     $this->value = $value;
 }
