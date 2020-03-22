@@ -50,7 +50,7 @@ public class NewJmsConfigurationAction extends AnAction {
         for (PhpNamedElementNode property: classProperties) {
             properties.put(
                 property.getText(),
-                PropertyTypeFinder.findFQC(property.getPsiElement())
+                PropertyTypeFinder.findFQCWithoutNull(property.getPsiElement())
             );
         }
 

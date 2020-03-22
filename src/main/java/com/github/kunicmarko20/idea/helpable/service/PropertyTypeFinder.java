@@ -25,6 +25,13 @@ public class PropertyTypeFinder {
     }
 
     @NotNull
+    public static String findFQCWithoutNull(@NotNull PsiElement psiElement) {
+        return PropertyTypeFinder.findFQC(psiElement)
+            .replace("null|", "")
+            .replace("|null", "");
+    }
+
+    @NotNull
     public static String find(@NotNull Field field, @NotNull Project project) {
         PhpPsiElement scopeForUseOperator = PhpCodeInsightUtil.findScopeForUseOperator(field);
 
