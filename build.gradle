@@ -1,6 +1,6 @@
 plugins {
     id 'org.jetbrains.intellij' version '0.4.10'
-    id 'com.github.johnrengelman.shadow' version '5.1.0'
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
 }
 
 repositories {
@@ -26,7 +26,7 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 intellij {
-    version ideaVersion
+    version "IU-${ideaVersion}"
     pluginName 'Helpable'
 
     plugins = [
@@ -47,9 +47,6 @@ wrapper {
 }
 
 jar {
-    baseName = "helpable"
-}
-
-shadowJar {
-    classifier = null
+    archiveBaseName = "helpable"
+    archiveClassifier = ideaVersion
 }
