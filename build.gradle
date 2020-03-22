@@ -46,7 +46,7 @@ wrapper {
     gradleVersion '5.5.1'
 }
 
-jar {
+shadowJar {
     archiveBaseName = "helpable"
     archiveClassifier = ideaVersion
 }

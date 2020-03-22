@@ -10,7 +10,9 @@ import com.intellij.psi.PsiFileFactory;
 import com.jetbrains.php.PhpIcons;
 import com.jetbrains.php.PhpIndex;
 import com.jetbrains.php.lang.PhpFileType;
+import com.jetbrains.php.lang.psi.elements.Method;
 import com.jetbrains.php.lang.psi.elements.PhpClass;
+import com.jetbrains.php.lang.psi.elements.impl.MethodImpl;
 import com.jetbrains.php.roots.PhpNamespaceCompositeProvider;
 import org.apache.commons.lang.WordUtils;
 import org.jetbrains.annotations.NotNull;
@@ -47,6 +49,7 @@ public class NewJmsHandlerAction extends AnAction {
         String handlerName = phpClass.getName() + "Handler";
 
         JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/jms_handler.twig.php");
+        MethodImpl toMethod = (MethodImpl) this.toMethod(phpClass);
         JtwigModel model = JtwigModel.newModel()
             .with("namespace", namespaces.isEmpty() ? "" : namespaces.get(0))
             .with("handling_type_fqcn", phpClass.getFQN().substring(1))
@@ -54,7 +57,8 @@ public class NewJmsHandlerAction extends AnAction {
             .with("handling_type_variable_name", "$" + WordUtils.uncapitalize(phpClass.getName()))
             .with("name", handlerName)
             .with("factory_method", this.factoryMethod(phpClass))
-            .with("to_method", this.toMethod(phpClass));
+            .with("to_method", toMethod.getName())
+            .with("to_method_type", toMethod.getDeclaredType());
 
         ApplicationManager.getApplication().runWriteAction(() -> {
             directory.add(
@@ -67,13 +71,12 @@ public class NewJmsHandlerAction extends AnAction {
         });
     }
 
-    private String toMethod(PhpClass phpClass) {
+    private Method toMethod(PhpClass phpClass) {
         return phpClass.getMethods()
                 .stream()
                 .filter(method -> method.getName().startsWith("to"))
                 .findFirst()
-                .get()
-                .getName();
+                .get();
     }
 
     private String factoryMethod(PhpClass phpClass) {
