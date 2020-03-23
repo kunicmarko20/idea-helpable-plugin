@@ -1,7 +1,7 @@
 <idea-plugin>
   <id>com.github.kunicmarko20.idea.helpable</id>
   <name>Helpable</name>
-  <version>0.3.0</version>
+  <version>0.3.1</version>
   <vendor email="kunicmarko20@gmail.com" url="https://github.com/kunicmarko20">Marko Kunic</vendor>
 
   <idea-version since-build="192.0"/>
