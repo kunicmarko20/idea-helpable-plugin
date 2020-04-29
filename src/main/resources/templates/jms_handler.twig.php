@@ -32,7 +32,7 @@ final class {{ name }} implements SubscribingHandlerInterface
 
     public function deserialize(JsonDeserializationVisitor $visitor, {{ to_method_type }} $value): {{ handling_type_name }}
     {
-        return {{ handling_type_name }}::{{ factory_method }}($value));
+        return {{ handling_type_name }}::{{ factory_method }}($value);
     }
 
     public function serialize(JsonSerializationVisitor $visitor, {{ handling_type_name }} $value): {{ to_method_type }}
