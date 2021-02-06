@@ -3,15 +3,12 @@ private const ALL = [{% for variant in variants %}
 {%- endfor %}
 ];
 
-/**
-* @var string
-*/
-private $value;
+private string $value;
 
 /**
 * @var array<string, {{ type }}>
 */
-private static $lazyLoad = [];
+private static array $lazyLoad = [];
 
 private function __construct(string $value)
 {
@@ -22,7 +19,7 @@ private function __construct(string $value)
 
 public static function fromString(string $value): self
 {
-    return new self($value);
+    return self::lazyLoad($value);
 }
 {% for camel_cased_variant, variant in variants %}
     public static function {{ camel_cased_variant }}(): self
@@ -39,12 +36,12 @@ private static function lazyLoad(string $value): self
     return self::$lazyLoad[$value] = new self($value);
 }
 
-public function toString(): string
-{
-    return $this->value;
-}
-
 public function equals({{ type }} $other): bool
 {
     return $this->value === $other->value;
+}
+
+public function toString(): string
+{
+    return $this->value;
 }

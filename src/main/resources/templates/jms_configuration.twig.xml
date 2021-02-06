@@ -3,6 +3,6 @@
     <class name="{{ class }}" exclusion-policy="ALL">
         {%- for property, type in properties %}
         <property name="{{ property }}" type="{{ type }}" expose="true" />
-        {%- endfor -%}
+        {%- endfor %}
     </class>
 </serializer>

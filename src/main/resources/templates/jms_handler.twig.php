@@ -12,6 +12,9 @@ use {{ handling_type_fqcn }};
 
 final class {{ name }} implements SubscribingHandlerInterface
 {
+    /**
+     * @return array<int, array<string, string|int>>
+     */
     public static function getSubscribingMethods(): array
     {
         return [
